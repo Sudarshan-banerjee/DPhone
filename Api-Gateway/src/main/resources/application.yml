@@ -1,0 +1,20 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: Api-Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: CUSTOMER-SERVICE
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+            - Path=/customer/**
+
+        - id: BUYING-DETAILS
+          uri: lb://BUYING-DETAILS
+          predicates:
+            - Path=/buying-details/**
+
+
